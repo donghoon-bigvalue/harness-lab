@@ -92,3 +92,19 @@
 | 2026-07-24 | 초기 구성 — 리드 + 조사원 5명(web-researcher, academic-researcher, community-researcher, cross-validator, synthesis-writer), 스킬 6개 | deep-research 전체 | issue #6 |
 | 2026-07-24 | 조사원 3명에 공통 주장 레코드 형식(출처유형·신뢰강도·Q번호 태깅) 부여 | agents/{web,academic,community}-researcher, skills/{web,academic,community}-research | Q번호 정렬과 출처 태깅이 없으면 cross-validator가 세 각도를 삼각측량할 수 없음 |
 | 2026-07-24 | 교차 검증 축(cross-validator)을 이슈 명시 각도 외로 추가 | agents/cross-validator.md, skills/cross-validation | "교차 검증 후 종합"이 이슈 핵심 요구 — 삼각측량 분류(확증/상충/단일출처/미확인)가 신뢰도 층위의 근거 |
+
+## 하네스: API 문서 생성
+
+**목표:** 코드베이스에서 API 엔드포인트를 추출·분석하고, 설명·사용 예제를 작성한 뒤, 실제 소스와 교차 대조하는 완성도 리뷰를 파이프라인으로 처리하여, 근거(파일:라인)가 붙은 API 레퍼런스 문서 하나를 산출한다.
+
+**플러그인:** `api-doc-harness` (문서 리드 1 + 팀원 4, 스킬 5) | **작업 루트:** 실행 프로젝트의 `api-docs/`
+
+**트리거:** 코드베이스의 API 문서화·API 레퍼런스 생성·엔드포인트 문서 자동 생성·OpenAPI 명세 추출 요청(부분 요청 포함) 시 `api-doc-harness:orchestrator` 스킬을 사용하라. 후속 요청("특정 엔드포인트 설명만 다시", "예제에 언어 추가", "응답 형태 틀린 것 고쳐", "새 엔드포인트 반영", "리뷰 다시")도 동일하다. 단순한 API 사용법 한 줄 질문은 직접 응답 가능.
+
+**변경 이력:**
+| 날짜 | 변경 내용 | 대상 | 사유 |
+|------|----------|------|------|
+| 2026-07-24 | 초기 구성 — 리드 + 팀원 4명(endpoint-analyzer, description-writer, example-generator, completeness-reviewer), 스킬 5개 | api-doc-harness 전체 | issue #10 |
+| 2026-07-24 | 엔드포인트 ID(E번호) + 파일:라인 근거를 파이프라인 공통 색인으로 부여 | agents/*, skills/* | E번호 정렬이 없으면 설명·예제가 어느 엔드포인트를 가리키는지, 리뷰어가 무엇을 대조하는지 알 수 없음 |
+| 2026-07-24 | 완성도 리뷰를 "존재 확인"이 아닌 소스 직접 3자 교차 대조로 규정 | agents/completeness-reviewer.md, skills/completeness-review | API 문서의 치명적 실패는 그럴듯하지만 코드와 다른 서술 — 레코드만 믿으면 추출 오류·누락을 통과시킴 |
+| 2026-07-24 | 프레임워크별 라우트 탐색 전략을 조건부 로딩 reference로 분리 | skills/endpoint-analysis/references/frameworks.md | Express·FastAPI·Spring·Rails·Go 등 스택별 등록 방식이 근본적으로 달라 단일 문서로는 오버피팅 |
