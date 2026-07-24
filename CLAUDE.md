@@ -92,3 +92,19 @@
 | 2026-07-24 | 초기 구성 — 리드 + 조사원 5명(web-researcher, academic-researcher, community-researcher, cross-validator, synthesis-writer), 스킬 6개 | deep-research 전체 | issue #6 |
 | 2026-07-24 | 조사원 3명에 공통 주장 레코드 형식(출처유형·신뢰강도·Q번호 태깅) 부여 | agents/{web,academic,community}-researcher, skills/{web,academic,community}-research | Q번호 정렬과 출처 태깅이 없으면 cross-validator가 세 각도를 삼각측량할 수 없음 |
 | 2026-07-24 | 교차 검증 축(cross-validator)을 이슈 명시 각도 외로 추가 | agents/cross-validator.md, skills/cross-validation | "교차 검증 후 종합"이 이슈 핵심 요구 — 삼각측량 분류(확증/상충/단일출처/미확인)가 신뢰도 층위의 근거 |
+
+## 하네스: 마케팅 캠페인 제작
+
+**목표:** 타겟 시장 조사로 포지셔닝 스파인(세그먼트·메시지 기둥)을 세우고, 그 축에 광고 카피·비주얼 컨셉·A/B 테스트 계획을 정렬시키며, 품질 리뷰어가 산출물 간 정합성을 반복 검수해 실행 가능한 캠페인 패키지 하나를 산출한다.
+
+**플러그인:** `marketing-campaign-harness` (캠페인 리드 1 + 전문가 5, 스킬 6) | **작업 루트:** 실행 프로젝트의 `marketing/`
+
+**트리거:** 마케팅/광고 캠페인 기획·제작 관련 요청(타겟 조사, 광고 카피, 비주얼 컨셉, A/B 테스트 계획 — 부분 요청 포함) 시 `marketing-campaign-harness:orchestrator` 스킬을 사용하라. 후속 요청("카피만 다시", "비주얼만 다시", "타겟 바꿔서", "테스트 계획만", "리뷰 한 번 더")도 동일하다. 단순 마케팅 용어·개념 질문은 직접 응답 가능.
+
+**변경 이력:**
+| 날짜 | 변경 내용 | 대상 | 사유 |
+|------|----------|------|------|
+| 2026-07-24 | 초기 구성 — 리드 + 전문가 5명(market-researcher, copywriter, visual-concept-designer, ab-test-planner, quality-reviewer), 스킬 6개 | marketing-campaign-harness 전체 | issue #12 |
+| 2026-07-24 | 포지셔닝 스파인(세그먼트 S#·메시지 기둥 P#) 태깅 축 도입 | agents/*, skills/* | S#·P# 태깅이 없으면 quality-reviewer가 카피·비주얼·A/B의 정합성을 교차 대조할 수 없음 — 딥 리서치의 Q번호와 동일 역할 |
+| 2026-07-24 | 반복 품질 리뷰를 최종 게이트가 아닌 상주 점진 검수로 설계 | agents/quality-reviewer.md, skills/{campaign-review,orchestrator} | "반복적 품질 리뷰와 함께 진행"이 이슈 핵심 요구 — 잘못된 조사 위에 쌓인 창작물의 전량 재작업을 상류에서 차단 |
+| 2026-07-24 | 시장 조사를 창작 앞 단계로 배치(하이브리드), 조사가 기둥 가설을 교정 | skills/orchestrator | 카피·비주얼은 검증된 포지셔닝에 의존 — 순수 팬아웃이 아니라 조사→창작 파이프라인 + 상주 검수 |

@@ -1,0 +1,25 @@
+{
+  "name": "marketing-campaign-harness",
+  "description": "마케팅 캠페인 제작 하네스. 타겟 시장 조사로 포지셔닝을 세우고, 그 포지셔닝 축(세그먼트·메시지 기둥)에 광고 카피·비주얼 컨셉·A/B 테스트 계획을 정렬시키며, 품질 리뷰어가 산출물 간 정합성을 반복 검수해 실행 가능한 캠페인 패키지 하나를 산출한다. 캠페인 리드 1명 + 전문가 5명, 스킬 6개.",
+  "version": "1.0.0",
+  "author": {
+    "name": "donghoon",
+    "url": "https://github.com/donghoon-bigvalue"
+  },
+  "homepage": "https://github.com/donghoon-bigvalue/harness-lab",
+  "repository": "https://github.com/donghoon-bigvalue/harness-lab",
+  "keywords": [
+    "marketing",
+    "campaign",
+    "market-research",
+    "ad-copy",
+    "copywriting",
+    "visual-concept",
+    "creative-direction",
+    "ab-testing",
+    "positioning",
+    "agent-team",
+    "harness",
+    "claude-code-plugin"
+  ]
+}
