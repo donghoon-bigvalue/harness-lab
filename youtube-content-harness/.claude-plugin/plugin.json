@@ -1,0 +1,21 @@
+{
+  "name": "youtube-content-harness",
+  "description": "유튜브 콘텐츠 제작 하네스. 트렌드 조사 → 대본 → 제목/태그 SEO → 썸네일 컨셉 → 교차 검수를 감독자 에이전트가 조율하여 발행 가능한 콘텐츠 패키지 하나를 만들어낸다. 감독자 1명 + 전문 팀원 5명, 스킬 6개.",
+  "version": "1.0.0",
+  "author": {
+    "name": "donghoon",
+    "url": "https://github.com/donghoon-bigvalue"
+  },
+  "homepage": "https://github.com/donghoon-bigvalue/harness-lab",
+  "repository": "https://github.com/donghoon-bigvalue/harness-lab",
+  "keywords": [
+    "youtube",
+    "content-creation",
+    "script-writing",
+    "seo",
+    "thumbnail",
+    "agent-team",
+    "harness",
+    "claude-code-plugin"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "harness-lab",
+  "owner": {
+    "name": "donghoon",
+    "url": "https://github.com/donghoon-bigvalue"
+  },
+  "plugins": [
+    {
+      "name": "youtube-content-harness",
+      "source": "./youtube-content-harness",
+      "description": "유튜브 콘텐츠 제작 하네스. 트렌드 조사 → 대본 → 제목/태그 SEO → 썸네일 컨셉 → 교차 검수를 감독자 에이전트가 조율하여 발행 가능한 콘텐츠 패키지 하나를 만들어낸다.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "webtoon-studio",
+      "source": "./webtoon-studio",
+      "description": "웹툰 에피소드 제작 하네스. 스토리·캐릭터·패널·대사를 병렬 제작하고 상호 교차 리뷰로 스타일 일관성을 확보해, 회차 원고 패키지와 콘티를 산출한다.",
+      "version": "1.0.0"
+    }
+  ]
+}
