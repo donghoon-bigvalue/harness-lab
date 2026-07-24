@@ -92,3 +92,18 @@
 | 2026-07-24 | 초기 구성 — 리드 + 조사원 5명(web-researcher, academic-researcher, community-researcher, cross-validator, synthesis-writer), 스킬 6개 | deep-research 전체 | issue #6 |
 | 2026-07-24 | 조사원 3명에 공통 주장 레코드 형식(출처유형·신뢰강도·Q번호 태깅) 부여 | agents/{web,academic,community}-researcher, skills/{web,academic,community}-research | Q번호 정렬과 출처 태깅이 없으면 cross-validator가 세 각도를 삼각측량할 수 없음 |
 | 2026-07-24 | 교차 검증 축(cross-validator)을 이슈 명시 각도 외로 추가 | agents/cross-validator.md, skills/cross-validation | "교차 검증 후 종합"이 이슈 핵심 요구 — 삼각측량 분류(확증/상충/단일출처/미확인)가 신뢰도 층위의 근거 |
+
+## 하네스: 풀스택 웹사이트 제작
+
+**목표:** 와이어프레임·디자인부터 프론트엔드(React/Next.js)·백엔드(API) 구현, 통합 QA, 배포 준비까지를 하나의 파이프라인으로 조율하여, 실행 가능한 풀스택 웹앱 하나를 산출한다.
+
+**플러그인:** `website-studio` (빌드 리드 1 + 엔지니어 5, 스킬 6) | **작업 루트:** 실행 프로젝트의 `website/`
+
+**트리거:** 웹사이트·웹앱·풀스택 개발, 랜딩페이지·대시보드·관리자 페이지 제작, React/Next.js 프론트엔드, API·백엔드 구축, 와이어프레임부터 배포까지 요청(부분 요청 포함) 시 `website-studio:orchestrator` 스킬을 사용하라. 후속 요청("이 화면만 다시", "API 응답 형태 바꿔줘", "이 페이지 추가", "QA 다시", "배포 준비만")도 동일하다. 단순 개념 질문("Next.js가 뭐야")은 직접 응답 가능.
+
+**변경 이력:**
+| 날짜 | 변경 내용 | 대상 | 사유 |
+|------|----------|------|------|
+| 2026-07-24 | 초기 구성 — 빌드 리드 + 엔지니어 5명(ux-designer, frontend-engineer, backend-engineer, qa-inspector, deploy-engineer), 스킬 6개 | website-studio 전체 | issue #8 |
+| 2026-07-24 | API 계약을 파이프라인 중앙 게이트로 배치 — 구현 착수 전 프론트·백엔드가 응답 shape·케이싱·동기여부를 서명 | skills/orchestrator(Phase 2), agents/{frontend,backend}-engineer | 웹앱 런타임 버그 최대 원천인 경계면 불일치(API 응답↔훅 shape)를 구현 전에 차단 |
+| 2026-07-24 | QA를 general-purpose 계열 통합 정합성 검증 축으로 추가 + 점진 QA 채택 | agents/qa-inspector.md, skills/qa-inspection | 존재 확인이 아니라 "양쪽 동시 읽기" 교차 비교가 경계면 버그를 잡는 유일한 방법 — 각 모듈 완성 직후 검증해 초기 불일치의 후속 전파 차단 |
