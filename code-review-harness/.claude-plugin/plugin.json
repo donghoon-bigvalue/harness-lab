@@ -1,0 +1,23 @@
+{
+  "name": "code-review-harness",
+  "description": "종합 코드 리뷰 하네스. 아키텍처·보안 취약점·성능 병목·코드 스타일 네 축을 전문 감사원이 병렬로 감사하고, 발견을 교차 검증(오탐 제거·중복 병합·교차 재분류·심각도 정규화)한 뒤, 심각도로 우선순위를 매긴 하나의 리뷰 리포트로 통합한다. 리뷰 리드 1명 + 전문 감사원 4명 + 검증관 1명 + 통합관 1명, 스킬 7개.",
+  "version": "1.0.0",
+  "author": {
+    "name": "donghoon",
+    "url": "https://github.com/donghoon-bigvalue"
+  },
+  "homepage": "https://github.com/donghoon-bigvalue/harness-lab",
+  "repository": "https://github.com/donghoon-bigvalue/harness-lab",
+  "keywords": [
+    "code-review",
+    "architecture",
+    "security",
+    "performance",
+    "code-style",
+    "audit",
+    "static-analysis",
+    "agent-team",
+    "harness",
+    "claude-code-plugin"
+  ]
+}
