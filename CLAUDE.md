@@ -138,3 +138,20 @@
 | 2026-07-24 | 포지셔닝 스파인(세그먼트 S#·메시지 기둥 P#) 태깅 축 도입 | agents/*, skills/* | S#·P# 태깅이 없으면 quality-reviewer가 카피·비주얼·A/B의 정합성을 교차 대조할 수 없음 — 딥 리서치의 Q번호와 동일 역할 |
 | 2026-07-24 | 반복 품질 리뷰를 최종 게이트가 아닌 상주 점진 검수로 설계 | agents/quality-reviewer.md, skills/{campaign-review,orchestrator} | "반복적 품질 리뷰와 함께 진행"이 이슈 핵심 요구 — 잘못된 조사 위에 쌓인 창작물의 전량 재작업을 상류에서 차단 |
 | 2026-07-24 | 시장 조사를 창작 앞 단계로 배치(하이브리드), 조사가 기둥 가설을 교정 | skills/orchestrator | 카피·비주얼은 검증된 포지셔닝에 의존 — 순수 팬아웃이 아니라 조사→창작 파이프라인 + 상주 검수 |
+
+## 하네스: 데이터 파이프라인 설계
+
+**목표:** 파이프라인 아키텍트가 요구사항을 분해해 스키마 설계 → ETL 로직 → 데이터 검증 규칙 → 모니터링 설정을 전문 에이전트에게 계층적으로 위임하고, 통합 리뷰어가 엔티티/필드 카탈로그를 기준축으로 네 산출물의 정합성을 교차 검증하여, 실행 가능한 파이프라인 설계 패키지 하나를 산출한다.
+
+**플러그인:** `data-pipeline-harness` (아키텍트 1 + 전문 에이전트 5, 스킬 6) | **작업 루트:** 실행 프로젝트의 `data-pipeline/`
+
+**트리거:** 데이터 파이프라인 설계·구축, 데이터 모델링/스키마 설계, ETL/ELT 로직, 데이터 검증·품질 규칙, 파이프라인 모니터링·관측성 요청(부분 요청 포함) 시 `data-pipeline-harness:orchestrator` 스킬을 사용하라. 후속 요청("스키마만 다시", "ETL만 다시", "검증 규칙 보강", "모니터링만 추가", "정합성 다시 검토")도 동일하다. 단순 개념 질문("ETL이 뭐야")은 직접 응답 가능.
+
+**변경 이력:**
+| 날짜 | 변경 내용 | 대상 | 사유 |
+|------|----------|------|------|
+| 2026-07-24 | 초기 구성 — 아키텍트 + 전문 에이전트 5명(schema-designer, etl-engineer, validation-engineer, monitoring-engineer, integration-reviewer), 스킬 6개 | data-pipeline-harness 전체 | issue #11 |
+| 2026-07-24 | 계층적 위임 구조 채택 — 스키마(계약) 먼저 → ETL·검증 병렬 → 모니터링 → 통합 리뷰 | skills/orchestrator | 이슈 핵심 요구가 "계층적으로 위임". 스키마가 계약이므로 하류 셋이 참조할 색인을 먼저 확정해야 함 |
+| 2026-07-24 | 전문 에이전트 4명에 공통 엔티티/필드 카탈로그(E번호·필드 ID) 색인 부여 | agents/{schema-designer,etl-engineer,validation-engineer,monitoring-engineer}, 해당 스킬 | 필드 ID 정렬이 없으면 integration-reviewer가 네 산출물의 경계면을 대조할 수 없음 (딥리서치 Q번호와 동일 역할) |
+| 2026-07-24 | 정합성 검증 축(integration-reviewer)을 이슈 명시 4영역 외로 추가 | agents/integration-reviewer.md, skills/integration-review | 네 산출물이 개별로 완벽해도 통합 시 다른 파이프라인을 가리킬 수 있음 — 경계면 대조(정합/불일치/누락/위험)가 "실행 가능한 하나의 설계"의 근거 |
+| 2026-07-24 | 적재 방식 분기(전체/증분/병합/CDC)를 references로 분리 | skills/etl-logic/references/load-patterns.md | 적재 방식은 그레인·주기·규모별 변형이 커 본문 오버피팅 방지 (progressive disclosure) |
