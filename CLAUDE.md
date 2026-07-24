@@ -77,3 +77,18 @@
 | 2026-07-23 | 워커 스킬 description에 경계 조건 추가 | skills/{trend-research,script-writing,seo-optimization,thumbnail-concept,content-review} | 트리거 검증에서 오케스트레이터와의 충돌 및 도메인 누수(블로그 SEO, 이미지 생성) 발견 |
 | 2026-07-24 | 플러그인으로 패키징 | 전체 | 다른 프로젝트에서 복사 없이 사용 |
 | 2026-07-24 | 팀원 소집을 실제 `subagent_type`으로 전환 | skills/orchestrator | 플러그인 배포 에이전트가 커스텀 타입으로 등록됨을 검증 — 정의 파일 Read 우회 불필요 |
+
+## 하네스: 딥 리서치
+
+**목표:** 어떤 주제든 웹·학술·커뮤니티 세 각도에서 병렬 조사하고 교차 검증(삼각측량)하여, 신뢰도 층위를 매긴 종합 리서치 보고서 하나를 산출한다.
+
+**플러그인:** `deep-research` (리서치 리드 1 + 조사원 5, 스킬 6) | **작업 루트:** 실행 프로젝트의 `research/`
+
+**트리거:** 어떤 주제든 깊이 조사·리서치·자료 조사·여러 각도 조사·팩트체크·종합 보고서 요청(부분 요청 포함) 시 `deep-research:orchestrator` 스킬을 사용하라. 후속 요청("커뮤니티 반응만 다시", "학술 근거 보강", "보고서만 다시")도 동일하다. 단순 사실 한 줄 질문은 직접 응답 가능.
+
+**변경 이력:**
+| 날짜 | 변경 내용 | 대상 | 사유 |
+|------|----------|------|------|
+| 2026-07-24 | 초기 구성 — 리드 + 조사원 5명(web-researcher, academic-researcher, community-researcher, cross-validator, synthesis-writer), 스킬 6개 | deep-research 전체 | issue #6 |
+| 2026-07-24 | 조사원 3명에 공통 주장 레코드 형식(출처유형·신뢰강도·Q번호 태깅) 부여 | agents/{web,academic,community}-researcher, skills/{web,academic,community}-research | Q번호 정렬과 출처 태깅이 없으면 cross-validator가 세 각도를 삼각측량할 수 없음 |
+| 2026-07-24 | 교차 검증 축(cross-validator)을 이슈 명시 각도 외로 추가 | agents/cross-validator.md, skills/cross-validation | "교차 검증 후 종합"이 이슈 핵심 요구 — 삼각측량 분류(확증/상충/단일출처/미확인)가 신뢰도 층위의 근거 |
