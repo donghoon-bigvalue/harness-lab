@@ -1,0 +1,21 @@
+{
+  "name": "webtoon-studio",
+  "description": "웹툰 에피소드 제작 하네스. 스토리·캐릭터·패널·대사를 병렬 제작하고 상호 교차 리뷰로 스타일 일관성을 확보해, 회차 원고 패키지와 콘티를 산출한다. 전문 에이전트 5명, 스킬 6개.",
+  "version": "1.0.0",
+  "author": {
+    "name": "donghoon",
+    "url": "https://github.com/donghoon-bigvalue"
+  },
+  "homepage": "https://github.com/donghoon-bigvalue/harness-lab",
+  "repository": "https://github.com/donghoon-bigvalue/harness-lab",
+  "keywords": [
+    "webtoon",
+    "comics",
+    "storytelling",
+    "panel-layout",
+    "character-design",
+    "agent-team",
+    "harness",
+    "claude-code-plugin"
+  ]
+}

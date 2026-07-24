@@ -28,6 +28,10 @@ build/
 # Claude Code (local-only settings)
 .claude/settings.local.json
 
+# 하네스 실행 산출물 (플러그인이 실행 프로젝트 루트에 만든다)
+/youtube-content/
+/webtoon/
+
 # Python
 __pycache__/
 *.pyc
