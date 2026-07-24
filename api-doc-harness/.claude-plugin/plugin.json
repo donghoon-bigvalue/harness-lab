@@ -1,0 +1,24 @@
+{
+  "name": "api-doc-harness",
+  "description": "API 문서 자동 생성 하네스. 코드베이스에서 API 엔드포인트를 추출·분석하고, 각 엔드포인트에 설명과 사용 예제를 작성한 뒤, 실제 소스와 교차 대조하는 완성도 리뷰를 파이프라인으로 처리하여, 근거(파일:라인)가 붙은 API 레퍼런스 문서 하나를 산출한다. 문서 리드 1명 + 전문 팀원 4명, 스킬 5개.",
+  "version": "1.0.0",
+  "author": {
+    "name": "donghoon",
+    "url": "https://github.com/donghoon-bigvalue"
+  },
+  "homepage": "https://github.com/donghoon-bigvalue/harness-lab",
+  "repository": "https://github.com/donghoon-bigvalue/harness-lab",
+  "keywords": [
+    "api",
+    "api-documentation",
+    "openapi",
+    "endpoint-analysis",
+    "usage-examples",
+    "documentation",
+    "code-analysis",
+    "pipeline",
+    "agent-team",
+    "harness",
+    "claude-code-plugin"
+  ]
+}

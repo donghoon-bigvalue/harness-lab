@@ -155,3 +155,19 @@
 | 2026-07-24 | 전문 에이전트 4명에 공통 엔티티/필드 카탈로그(E번호·필드 ID) 색인 부여 | agents/{schema-designer,etl-engineer,validation-engineer,monitoring-engineer}, 해당 스킬 | 필드 ID 정렬이 없으면 integration-reviewer가 네 산출물의 경계면을 대조할 수 없음 (딥리서치 Q번호와 동일 역할) |
 | 2026-07-24 | 정합성 검증 축(integration-reviewer)을 이슈 명시 4영역 외로 추가 | agents/integration-reviewer.md, skills/integration-review | 네 산출물이 개별로 완벽해도 통합 시 다른 파이프라인을 가리킬 수 있음 — 경계면 대조(정합/불일치/누락/위험)가 "실행 가능한 하나의 설계"의 근거 |
 | 2026-07-24 | 적재 방식 분기(전체/증분/병합/CDC)를 references로 분리 | skills/etl-logic/references/load-patterns.md | 적재 방식은 그레인·주기·규모별 변형이 커 본문 오버피팅 방지 (progressive disclosure) |
+
+## 하네스: API 문서 생성
+
+**목표:** 코드베이스에서 API 엔드포인트를 추출·분석하고, 설명·사용 예제를 작성한 뒤, 실제 소스와 교차 대조하는 완성도 리뷰를 파이프라인으로 처리하여, 근거(파일:라인)가 붙은 API 레퍼런스 문서 하나를 산출한다.
+
+**플러그인:** `api-doc-harness` (문서 리드 1 + 팀원 4, 스킬 5) | **작업 루트:** 실행 프로젝트의 `api-docs/`
+
+**트리거:** 코드베이스의 API 문서화·API 레퍼런스 생성·엔드포인트 문서 자동 생성·OpenAPI 명세 추출 요청(부분 요청 포함) 시 `api-doc-harness:orchestrator` 스킬을 사용하라. 후속 요청("특정 엔드포인트 설명만 다시", "예제에 언어 추가", "응답 형태 틀린 것 고쳐", "새 엔드포인트 반영", "리뷰 다시")도 동일하다. 단순한 API 사용법 한 줄 질문은 직접 응답 가능.
+
+**변경 이력:**
+| 날짜 | 변경 내용 | 대상 | 사유 |
+|------|----------|------|------|
+| 2026-07-24 | 초기 구성 — 리드 + 팀원 4명(endpoint-analyzer, description-writer, example-generator, completeness-reviewer), 스킬 5개 | api-doc-harness 전체 | issue #10 |
+| 2026-07-24 | 엔드포인트 ID(E번호) + 파일:라인 근거를 파이프라인 공통 색인으로 부여 | agents/*, skills/* | E번호 정렬이 없으면 설명·예제가 어느 엔드포인트를 가리키는지, 리뷰어가 무엇을 대조하는지 알 수 없음 |
+| 2026-07-24 | 완성도 리뷰를 "존재 확인"이 아닌 소스 직접 3자 교차 대조로 규정 | agents/completeness-reviewer.md, skills/completeness-review | API 문서의 치명적 실패는 그럴듯하지만 코드와 다른 서술 — 레코드만 믿으면 추출 오류·누락을 통과시킴 |
+| 2026-07-24 | 프레임워크별 라우트 탐색 전략을 조건부 로딩 reference로 분리 | skills/endpoint-analysis/references/frameworks.md | Express·FastAPI·Spring·Rails·Go 등 스택별 등록 방식이 근본적으로 달라 단일 문서로는 오버피팅 |
