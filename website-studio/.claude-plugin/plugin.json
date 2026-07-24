@@ -1,0 +1,28 @@
+{
+  "name": "website-studio",
+  "description": "풀스택 웹사이트 제작 하네스. 와이어프레임·디자인 → API 계약 합의 → 프론트엔드(React/Next.js)·백엔드(API) 병렬 구현 → 경계면 교차 검증 QA → 배포 준비를, 빌드 리드가 조율하는 에이전트 팀으로 파이프라인화하여 실행 가능한 풀스택 웹앱 하나를 산출한다. 빌드 리드 1명 + 전문 엔지니어 5명, 스킬 6개.",
+  "version": "1.0.0",
+  "author": {
+    "name": "donghoon",
+    "url": "https://github.com/donghoon-bigvalue"
+  },
+  "homepage": "https://github.com/donghoon-bigvalue/harness-lab",
+  "repository": "https://github.com/donghoon-bigvalue/harness-lab",
+  "keywords": [
+    "website",
+    "fullstack",
+    "nextjs",
+    "react",
+    "frontend",
+    "backend",
+    "api",
+    "ux-design",
+    "wireframe",
+    "qa",
+    "integration-testing",
+    "deployment",
+    "agent-team",
+    "harness",
+    "claude-code-plugin"
+  ]
+}
