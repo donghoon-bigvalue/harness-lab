@@ -107,3 +107,18 @@
 | 2026-07-24 | 초기 구성 — 빌드 리드 + 엔지니어 5명(ux-designer, frontend-engineer, backend-engineer, qa-inspector, deploy-engineer), 스킬 6개 | website-studio 전체 | issue #8 |
 | 2026-07-24 | API 계약을 파이프라인 중앙 게이트로 배치 — 구현 착수 전 프론트·백엔드가 응답 shape·케이싱·동기여부를 서명 | skills/orchestrator(Phase 2), agents/{frontend,backend}-engineer | 웹앱 런타임 버그 최대 원천인 경계면 불일치(API 응답↔훅 shape)를 구현 전에 차단 |
 | 2026-07-24 | QA를 general-purpose 계열 통합 정합성 검증 축으로 추가 + 점진 QA 채택 | agents/qa-inspector.md, skills/qa-inspection | 존재 확인이 아니라 "양쪽 동시 읽기" 교차 비교가 경계면 버그를 잡는 유일한 방법 — 각 모듈 완성 직후 검증해 초기 불일치의 후속 전파 차단 |
+
+## 하네스: 종합 코드 리뷰
+
+**목표:** 아키텍처·보안 취약점·성능 병목·코드 스타일 네 축을 병렬 감사하고, 발견을 교차 검증(오탐 제거·중복 병합·교차 재분류·심각도 정규화)하여, 심각도로 우선순위를 매긴 하나의 리뷰 리포트를 산출한다.
+
+**플러그인:** `code-review-harness` (리뷰 리드 1 + 감사원 4 + 검증관 1 + 통합관 1, 스킬 7) | **작업 루트:** 실행 프로젝트의 `code-review/`
+
+**트리거:** 코드 리뷰·코드 감사·종합 리뷰, 특정 코드/PR/브랜치/변경분 리뷰, 아키텍처·보안·성능·스타일 점검, 취약점·병목·구조 검토 요청(부분 요청 포함) 시 `code-review-harness:orchestrator` 스킬을 사용하라. 후속 요청("보안만 다시", "성능 발견 보강", "검증 다시", "리포트만 다시")도 동일하다. 특정 함수 한 줄에 대한 단순 질문은 직접 응답 가능.
+
+**변경 이력:**
+| 날짜 | 변경 내용 | 대상 | 사유 |
+|------|----------|------|------|
+| 2026-07-24 | 초기 구성 — 리드 + 감사원 4명(architecture, security, performance, style) + 검증관 1(finding-verifier) + 통합관 1(report-integrator), 스킬 7개 | code-review-harness 전체 | issue #9 |
+| 2026-07-24 | 감사원 4명에 공통 발견 레코드 형식(축별 ID·심각도·확신도·위치 태깅) 부여 | agents/*-auditor, skills/*-audit | 축별 ID·위치 정렬이 없으면 finding-verifier가 중복 병합·교차 발견·심각도 정규화를 할 수 없음 |
+| 2026-07-24 | 검증·트리아지 축(finding-verifier)을 이슈 명시 4축 외로 추가 | agents/finding-verifier.md, skills/finding-verification | "결과를 하나의 리포트로 통합"이 이슈 핵심 요구 — 오탐 제거·심각도 정규화·교차 발견 병합이 통합 신뢰도의 근거 |
